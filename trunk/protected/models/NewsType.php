@@ -82,4 +82,15 @@ class NewsType extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	/**
+	 * 
+	 * get all news type list from DB
+	 */
+	public function getNewsTypesList()
+	{
+	    $newsTypeList = NewsType::model()->findAll();
+	    
+      return CHtml::listData($newsTypeList, 'id', 'news_type_name');
+	}
 }

@@ -73,6 +73,9 @@ class NewsController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
+		//set default value of news type
+		$model->type_id = 2;
+		
 		$this->render('create',array(
 			'model'=>$model,
 		));

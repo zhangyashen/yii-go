@@ -42,12 +42,11 @@ class News extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('news_title, news_content, type_id, status_id, create_time', 'required'),
-			array('type_id, status_id', 'numerical', 'integerOnly'=>true),
-			array('news_title', 'length', 'max'=>128),
-			array('news_content', 'length', 'max'=>8000),
-			array('author_name, create_user_id, update_user_id', 'length', 'max'=>10),
-			array('update_time', 'safe'),
+			array('news_title, news_content', 'required'),
+			array('news_title', 'length', 'max'=>128, 'encoding'=>'utf-8'),
+			array('news_content', 'length', 'max'=>8000, 'encoding'=>'utf-8'),
+			array('author_name', 'length', 'max'=>3, 'encoding'=>'utf-8'),
+			array('type_id, status_id, create_time, update_time, create_user_id, update_user_id ', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, news_title, news_content, author_name, type_id, status_id, create_time, update_time, create_user_id, update_user_id', 'safe', 'on'=>'search'),
@@ -62,6 +61,8 @@ class News extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+		    'typeName'=>array(self::BELONGS_TO , 'NewsType', 'type_id' ),
+		    'statusName'=>array(self::BELONGS_TO, 'StatusType', 'status_id'),
 		);
 	}
 
@@ -109,5 +110,24 @@ class News extends CActiveRecord
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	protected function beforeSave(){
+	    if (parent::beforeSave()){
+            if ($this->isNewRecord){
+                //add a new news
+                $this->create_time = date('Y-m-d H:i:s');
+                $this->create_user_id = Yii::app()->user->id;
+            }else{
+                //update a news
+                $this->update_time = date('Y-m-d H:i:s');
+                $this->update_user_id = Yii::app()->user->id;
+                
+            }
+            	        
+	        return true;
+	    }else{
+	        return false;
+	    }
 	}
 }
