@@ -82,4 +82,10 @@ class StatusType extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function getStatusTypeList()
+	{
+	    $allStatus = StatusType::model()->findAll();
+	    return CHtml::listData($allStatus, 'id', 'status_name');
+	}
 }

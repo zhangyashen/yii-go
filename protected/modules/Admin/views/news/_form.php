@@ -17,7 +17,14 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'news_content'); ?>
-		<?php echo $form->textField($model,'news_content',array('size'=>60,'maxlength'=>8000)); ?>
+		<?php $this->widget('application.extensions.editor.CKkceditor',array(
+        "model"=>$model,                # Data-Model
+        "attribute"=>'news_content',         # Attribute in the Data-Model
+        "height"=>'400px',
+        "width"=>'100%',
+    	"filespath"=>Yii::app()->basePath."/../up/",
+        "filesurl"=>Yii::app()->baseUrl."/up/",
+    ) ); ?>
 		<?php echo $form->error($model,'news_content'); ?>
 	</div>
 
@@ -29,38 +36,14 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'type_id'); ?>
-		<?php echo $form->textField($model,'type_id'); ?>
+		<?php echo $form->dropDownList($model,'type_id', NewsType::model()->getNewsTypesList()); ?>
 		<?php echo $form->error($model,'type_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'status_id'); ?>
-		<?php echo $form->textField($model,'status_id'); ?>
+		<?php echo $form->dropDownList($model,'status_id', StatusType::model()->getStatusTypeList()); ?>
 		<?php echo $form->error($model,'status_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'create_time'); ?>
-		<?php echo $form->textField($model,'create_time'); ?>
-		<?php echo $form->error($model,'create_time'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'update_time'); ?>
-		<?php echo $form->textField($model,'update_time'); ?>
-		<?php echo $form->error($model,'update_time'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'create_user_id'); ?>
-		<?php echo $form->textField($model,'create_user_id',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'create_user_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'update_user_id'); ?>
-		<?php echo $form->textField($model,'update_user_id',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'update_user_id'); ?>
 	</div>
 
 	<div class="row buttons">

@@ -17,7 +17,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('type_id')); ?>:</b>
-	<?php echo CHtml::encode($data->type_id); ?>
+	<?php echo CHtml::encode($data->typeName->news_type_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('status_id')); ?>:</b>
