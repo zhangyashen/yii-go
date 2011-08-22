@@ -73,7 +73,7 @@ class News extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'news_title' => 'News Title',
+			'news_title' => '新闻标题',
 			'news_content' => 'News Content',
 			'author_name' => 'Author Name',
 			'type_id' => 'Type',

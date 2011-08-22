@@ -43,19 +43,25 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-		'news_title',
-		'news_content',
+//		'news_title',
+    array('name'=>'news_title','type'=>'raw' ,  'value'=>'CHtml::link($data->news_title,array("news/view",\'id\'=>$data->id), array("target"=>"_blank"))'),
+//		'news_content',
+    array('name'=>'news_content','htmlOptions'=>array('width'=>'30px')),
 		'author_name',
-		'type_id',
+		'create_time',
+//		'type_id',
+    array('name'=>'type_id','filter'=>NewsType::model()->getNewsTypesList() ,  'value'=>'$data->typeName->news_type_name'),
 		'status_id',
 		/*
-		'create_time',
 		'update_time',
 		'create_user_id',
 		'update_user_id',
 		*/
 		array(
 			'class'=>'CButtonColumn',
+		  'template'=>'{update}{delete}',
+		  'htmlOptions'=>array('width'=>'30px'),
+		'headerHtmlOptions'=>array('width'=>'34px'),
 		),
 	),
 )); ?>
