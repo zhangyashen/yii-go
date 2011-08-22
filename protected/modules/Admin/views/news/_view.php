@@ -21,7 +21,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('status_id')); ?>:</b>
-	<?php echo CHtml::encode($data->status_id); ?>
+	<?php echo CHtml::encode($data->statusName->status_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('create_time')); ?>:</b>
