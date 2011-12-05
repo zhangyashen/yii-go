@@ -44,14 +44,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 //		'news_title',
-    array('name'=>'news_title','type'=>'raw' ,  'value'=>'CHtml::link($data->news_title,array("news/view",\'id\'=>$data->id), array("target"=>"_blank"))'),
+    array('name'=>'news_title','type'=>'raw' ,'header'=>'123',  'value'=>'CHtml::link($data->news_title,array("news/view",\'id\'=>$data->id), array("target"=>"_blank"))'),
 //		'news_content',
-    array('name'=>'news_content','htmlOptions'=>array('width'=>'30px')),
+    array('name'=>'news_content' ,'htmlOptions'=>array('width'=>'30px')),
 		'author_name',
 		'create_time',
 //		'type_id',
     array('name'=>'type_id','filter'=>NewsType::model()->getNewsTypesList() ,  'value'=>'$data->typeName->news_type_name'),
-		'status_id',
+//		'status_id',
 		/*
 		'update_time',
 		'create_user_id',
@@ -61,7 +61,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 			'class'=>'CButtonColumn',
 		  'template'=>'{update}{delete}',
 		  'htmlOptions'=>array('width'=>'30px'),
-		'headerHtmlOptions'=>array('width'=>'34px'),
+			'headerHtmlOptions'=>array('width'=>'34px'),
 		),
 	),
 )); ?>
