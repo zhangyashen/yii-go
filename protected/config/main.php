@@ -86,8 +86,8 @@ return array(
 				
 				array(
 					'class'=>'CWebLogRoute',
-				  'levels'=>'trace',
-        	'categories'=>'system.db.*',
+				  'levels'=>'trace, info, error, warning, xdebug',
+        	'showInFireBug'=>true,
 				),
 				
 			),
