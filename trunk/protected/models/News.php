@@ -75,7 +75,7 @@ class News extends CActiveRecord
 			'id' => 'ID',
 			'news_title' => '新闻标题',
 			'news_content' => 'News Content',
-			'author_name' => 'Author Name',
+			'author_name' => '作者名称',
 			'type_id' => 'Type',
 			'status_id' => 'Status',
 			'create_time' => 'Create Time',
