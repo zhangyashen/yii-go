@@ -31,5 +31,15 @@ class ViewAndThemeController extends Controller
 	            'newsData' => $newsData,
 	            ));
 	}
+	
+	public function actionNewTheme(){
+	    
+	    //change layout file
+	    $this->layout = '//layouts/columnYiiblog2012';
+	    
+	    
+	    $this->render('newTheme');
+	}
+	
 
 }
