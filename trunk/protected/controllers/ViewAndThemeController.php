@@ -2,12 +2,13 @@
 
 class ViewAndThemeController extends Controller
 {
-  public $layout = '//layouts/column1';
+  public $layout = '/layouts/column3';
   public $navData = '';
   
   
 	public function actionIndex()
 	{
+	    var_dump(Yii::app()->theme);
 		$this->render('index');
 	}
 	
