@@ -31,4 +31,24 @@ class UploadController extends Controller
     }
     $this->render('index', array('model'=>$model));
 	}
+	
+	/**
+	 * ajax upload demo
+	 */
+	public function actionAjaxUpload(){
+	    
+	    //render
+	    $this->renderPartial('ajaxUpload');
+	}
+	
+	/**
+	 * get ajax uploaded files.
+	 */
+	public function actionGetAjax(){
+// 	    echo '<pre>';
+	    print_r($_POST);
+	    print_r($_FILES);
+	    $tmpImage = CUploadedFile::getInstanceByName('image');
+	    print_r($tmpImage);
+	}
 }
